@@ -26,7 +26,7 @@ Partial Class MainForm
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.SBReset = New DevExpress.XtraEditors.SimpleButton()
-        Me.SBHalt = New DevExpress.XtraEditors.SimpleButton()
+        Me.SBStop = New DevExpress.XtraEditors.SimpleButton()
         Me.TESSL = New DevExpress.XtraEditors.TextEdit()
         Me.TETimeout = New DevExpress.XtraEditors.TextEdit()
         Me.TEDatabase = New DevExpress.XtraEditors.TextEdit()
@@ -57,6 +57,7 @@ Partial Class MainForm
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.BWPing = New System.ComponentModel.BackgroundWorker()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -115,7 +116,7 @@ Partial Class MainForm
         'LayoutControl1
         '
         Me.LayoutControl1.Controls.Add(Me.SBReset)
-        Me.LayoutControl1.Controls.Add(Me.SBHalt)
+        Me.LayoutControl1.Controls.Add(Me.SBStop)
         Me.LayoutControl1.Controls.Add(Me.TESSL)
         Me.LayoutControl1.Controls.Add(Me.TETimeout)
         Me.LayoutControl1.Controls.Add(Me.TEDatabase)
@@ -144,14 +145,14 @@ Partial Class MainForm
         Me.SBReset.TabIndex = 11
         Me.SBReset.Text = "Reset"
         '
-        'SBHalt
+        'SBStop
         '
-        Me.SBHalt.Location = New System.Drawing.Point(709, 80)
-        Me.SBHalt.Name = "SBHalt"
-        Me.SBHalt.Size = New System.Drawing.Size(79, 22)
-        Me.SBHalt.StyleController = Me.LayoutControl1
-        Me.SBHalt.TabIndex = 10
-        Me.SBHalt.Text = "Halt"
+        Me.SBStop.Location = New System.Drawing.Point(709, 80)
+        Me.SBStop.Name = "SBStop"
+        Me.SBStop.Size = New System.Drawing.Size(79, 22)
+        Me.SBStop.StyleController = Me.LayoutControl1
+        Me.SBStop.TabIndex = 10
+        Me.SBStop.Text = "Stop"
         '
         'TESSL
         '
@@ -261,8 +262,8 @@ Partial Class MainForm
         Me.GCNumOfHit1.DisplayFormat.FormatString = "n0"
         Me.GCNumOfHit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GCNumOfHit1.FieldName = "NumOfHit1"
-        Me.GCNumOfHit1.MaxWidth = 20
         Me.GCNumOfHit1.Name = "GCNumOfHit1"
+        Me.GCNumOfHit1.OptionsColumn.AllowEdit = False
         Me.GCNumOfHit1.Visible = True
         Me.GCNumOfHit1.VisibleIndex = 0
         Me.GCNumOfHit1.Width = 20
@@ -270,10 +271,9 @@ Partial Class MainForm
         'GCExcTime1
         '
         Me.GCExcTime1.Caption = "Exec Time"
-        Me.GCExcTime1.DisplayFormat.FormatString = "yyyy-MM-DD hh:mm:ss.FFF"
-        Me.GCExcTime1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.GCExcTime1.FieldName = "excTime1"
         Me.GCExcTime1.Name = "GCExcTime1"
+        Me.GCExcTime1.OptionsColumn.AllowEdit = False
         Me.GCExcTime1.Visible = True
         Me.GCExcTime1.VisibleIndex = 1
         Me.GCExcTime1.Width = 111
@@ -291,6 +291,7 @@ Partial Class MainForm
         Me.GCNumSuccess1.MaxWidth = 65
         Me.GCNumSuccess1.MinWidth = 65
         Me.GCNumSuccess1.Name = "GCNumSuccess1"
+        Me.GCNumSuccess1.OptionsColumn.AllowEdit = False
         Me.GCNumSuccess1.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NumSuccess1", "{0:n0}")})
         Me.GCNumSuccess1.Visible = True
         Me.GCNumSuccess1.VisibleIndex = 2
@@ -309,6 +310,7 @@ Partial Class MainForm
         Me.GCNumFailed1.MaxWidth = 65
         Me.GCNumFailed1.MinWidth = 65
         Me.GCNumFailed1.Name = "GCNumFailed1"
+        Me.GCNumFailed1.OptionsColumn.ReadOnly = True
         Me.GCNumFailed1.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NumFailed1", "{0:n0}")})
         Me.GCNumFailed1.Visible = True
         Me.GCNumFailed1.VisibleIndex = 3
@@ -453,7 +455,7 @@ Partial Class MainForm
         '
         Me.LayoutControlItem11.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.LayoutControlItem11.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom
-        Me.LayoutControlItem11.Control = Me.SBHalt
+        Me.LayoutControlItem11.Control = Me.SBStop
         Me.LayoutControlItem11.Location = New System.Drawing.Point(697, 68)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(83, 26)
@@ -510,6 +512,11 @@ Partial Class MainForm
         Me.LayoutControlItem9.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(176, 13)
         '
+        'BWPing
+        '
+        Me.BWPing.WorkerReportsProgress = True
+        Me.BWPing.WorkerSupportsCancellation = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -520,7 +527,6 @@ Partial Class MainForm
         Me.Name = "MainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "By : Muhammad Guruh Ajinugroho"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         Me.PanelControl1.PerformLayout()
@@ -585,9 +591,10 @@ Partial Class MainForm
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SBHalt As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SBStop As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SBReset As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
+    Private WithEvents BWPing As System.ComponentModel.BackgroundWorker
 End Class

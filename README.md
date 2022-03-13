@@ -4,15 +4,16 @@ It's like when you do
 ```bash
 ping -t [IPADDRESS]
 ```
-for checking mysql connection via various ports (you input your desired IP and port).
+to check if you could connect to specified IP. This one allows you to do that for database connection.
 
-## Installation
+## Change log version 1.0
 
-Just run the .exe file
+- You can specifiy your own IP, Port, Username, Password, Database, Timeout, and SSL.
+- Currently work for mysql database (More db types are under development).
 
 ## Usage
 
-You will need to install Visual Studio 2019 or Higher or anything that can run .NET 5.0.
+You will need to install Visual Studio 2019 or Higher or anything that can run VB.NET 5.0.
 
 You will also need to install DevExpress 21.2.3 for editing winform components.
 
@@ -24,7 +25,7 @@ Please make sure to update tests as appropriate.
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-Copyright (c) 2022 Muhammad Guruh Ajinugroho
+Copyright (c) 2022 Muhammad Guruh Ajinugroho & Purnomo Fitra
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
