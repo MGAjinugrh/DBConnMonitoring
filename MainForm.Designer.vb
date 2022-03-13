@@ -25,6 +25,7 @@ Partial Class MainForm
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.SBExport = New DevExpress.XtraEditors.SimpleButton()
         Me.SBReset = New DevExpress.XtraEditors.SimpleButton()
         Me.SBStop = New DevExpress.XtraEditors.SimpleButton()
         Me.TESSL = New DevExpress.XtraEditors.TextEdit()
@@ -57,6 +58,8 @@ Partial Class MainForm
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.BWPing = New System.ComponentModel.BackgroundWorker()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
@@ -87,6 +90,8 @@ Partial Class MainForm
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -115,6 +120,7 @@ Partial Class MainForm
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.SBExport)
         Me.LayoutControl1.Controls.Add(Me.SBReset)
         Me.LayoutControl1.Controls.Add(Me.SBStop)
         Me.LayoutControl1.Controls.Add(Me.TESSL)
@@ -136,6 +142,15 @@ Partial Class MainForm
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'SBExport
+        '
+        Me.SBExport.Location = New System.Drawing.Point(722, 368)
+        Me.SBExport.Name = "SBExport"
+        Me.SBExport.Size = New System.Drawing.Size(66, 22)
+        Me.SBExport.StyleController = Me.LayoutControl1
+        Me.SBExport.TabIndex = 13
+        Me.SBExport.Text = "Export"
+        '
         'SBReset
         '
         Me.SBReset.Location = New System.Drawing.Point(709, 106)
@@ -151,7 +166,7 @@ Partial Class MainForm
         Me.SBStop.Name = "SBStop"
         Me.SBStop.Size = New System.Drawing.Size(79, 22)
         Me.SBStop.StyleController = Me.LayoutControl1
-        Me.SBStop.TabIndex = 10
+        Me.SBStop.TabIndex = 7
         Me.SBStop.Text = "Stop"
         '
         'TESSL
@@ -162,7 +177,7 @@ Partial Class MainForm
         Me.TESSL.Properties.NullText = "none"
         Me.TESSL.Size = New System.Drawing.Size(196, 20)
         Me.TESSL.StyleController = Me.LayoutControl1
-        Me.TESSL.TabIndex = 6
+        Me.TESSL.TabIndex = 9
         '
         'TETimeout
         '
@@ -177,7 +192,7 @@ Partial Class MainForm
         Me.TETimeout.Properties.UseMaskAsDisplayFormat = True
         Me.TETimeout.Size = New System.Drawing.Size(196, 20)
         Me.TETimeout.StyleController = Me.LayoutControl1
-        Me.TETimeout.TabIndex = 7
+        Me.TETimeout.TabIndex = 10
         '
         'TEDatabase
         '
@@ -187,7 +202,7 @@ Partial Class MainForm
         Me.TEDatabase.Properties.NullText = "mysql"
         Me.TEDatabase.Size = New System.Drawing.Size(196, 20)
         Me.TEDatabase.StyleController = Me.LayoutControl1
-        Me.TEDatabase.TabIndex = 5
+        Me.TEDatabase.TabIndex = 8
         '
         'TEPassword
         '
@@ -243,7 +258,7 @@ Partial Class MainForm
         Me.GridControl1.Location = New System.Drawing.Point(12, 132)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(776, 258)
+        Me.GridControl1.Size = New System.Drawing.Size(776, 232)
         Me.GridControl1.TabIndex = 12
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -322,7 +337,7 @@ Partial Class MainForm
         Me.SBExecute.Name = "SBExecute"
         Me.SBExecute.Size = New System.Drawing.Size(79, 22)
         Me.SBExecute.StyleController = Me.LayoutControl1
-        Me.SBExecute.TabIndex = 9
+        Me.SBExecute.TabIndex = 6
         Me.SBExecute.Text = "Execute"
         '
         'SPNumOfHits
@@ -338,13 +353,13 @@ Partial Class MainForm
         Me.SPNumOfHits.Properties.UseMaskAsDisplayFormat = True
         Me.SPNumOfHits.Size = New System.Drawing.Size(71, 20)
         Me.SPNumOfHits.StyleController = Me.LayoutControl1
-        Me.SPNumOfHits.TabIndex = 8
+        Me.SPNumOfHits.TabIndex = 5
         '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem2, Me.LayoutControlItem10, Me.LayoutControlItem7, Me.LayoutControlItem12, Me.LayoutControlItem2, Me.EmptySpaceItem1, Me.LayoutControlItem11, Me.LayoutControlItem1, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem9})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem2, Me.LayoutControlItem10, Me.LayoutControlItem7, Me.LayoutControlItem12, Me.LayoutControlItem2, Me.EmptySpaceItem1, Me.LayoutControlItem11, Me.LayoutControlItem1, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem3, Me.LayoutControlItem14})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(800, 402)
         Me.Root.TextVisible = False
@@ -354,7 +369,7 @@ Partial Class MainForm
         Me.LayoutControlItem3.Control = Me.GridControl1
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(780, 262)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(780, 236)
         Me.LayoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
@@ -512,6 +527,26 @@ Partial Class MainForm
         Me.LayoutControlItem9.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(176, 13)
         '
+        'EmptySpaceItem3
+        '
+        Me.EmptySpaceItem3.AllowHotTrack = False
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 356)
+        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(710, 26)
+        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem14
+        '
+        Me.LayoutControlItem14.Control = Me.SBExport
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(710, 356)
+        Me.LayoutControlItem14.MaxSize = New System.Drawing.Size(70, 26)
+        Me.LayoutControlItem14.MinSize = New System.Drawing.Size(70, 26)
+        Me.LayoutControlItem14.Name = "LayoutControlItem14"
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(70, 26)
+        Me.LayoutControlItem14.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem14.TextVisible = False
+        '
         'BWPing
         '
         Me.BWPing.WorkerReportsProgress = True
@@ -557,6 +592,8 @@ Partial Class MainForm
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -597,4 +634,7 @@ Partial Class MainForm
     Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
     Private WithEvents BWPing As System.ComponentModel.BackgroundWorker
+    Friend WithEvents SBExport As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
 End Class

@@ -6,10 +6,12 @@ ping -t [IPADDRESS]
 ```
 to check if you could connect to specified IP. This one allows you to do that for database connection.
 
-## Change log version 1.0
+## Change log version 1.1
 
 - You can specifiy your own IP, Port, Username, Password, Database, Timeout, and SSL.
 - Currently work for mysql database (More db types are under development).
+- Change failed result row color.
+- Can now export test result into various format.
 
 ## Usage
 

@@ -103,4 +103,17 @@ Public Class MainForm
         clearForm()
         LayoutControl1.BestFit()
     End Sub
+
+    Private Sub GridView1_RowStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles GridView1.RowStyle
+        Dim rowhandle = e.RowHandle
+        Dim failval = GridView1.GetRowCellValue(rowhandle, "NumFailed1")
+        If failval = 1 Then
+            e.Appearance.BackColor = Color.Maroon
+            e.Appearance.ForeColor = Color.White
+        End If
+    End Sub
+
+    Private Sub SBExport_Click(sender As Object, e As EventArgs) Handles SBExport.Click
+        GridControl1.ShowRibbonPrintPreview()
+    End Sub
 End Class
