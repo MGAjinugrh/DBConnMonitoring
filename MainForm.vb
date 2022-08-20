@@ -22,6 +22,7 @@ Public Class MainForm
         tbl = New DataTable
         tbl.Columns.Add("NumOfHit1", GetType(Int32))
         tbl.Columns.Add("excTime1", GetType(String))
+        tbl.Columns.Add("endTime1", GetType(String))
         tbl.Columns.Add("NumSuccess1", GetType(Int32))
         tbl.Columns.Add("NumFailed1", GetType(Int32))
         tbl.Columns("NumOfHit1").ReadOnly = False
@@ -74,6 +75,8 @@ Public Class MainForm
                 row("NumSuccess1") = 0
                 row("NumFailed1") = 1
             End If
+
+            row("endTime1") = Now.ToString("yyyy-MM-dd HH:mm:ss.fff")
             tbl.Rows.Add(row)
             persen = Math.Round(((countTest + 1) * 100) / 100, 0)
 
